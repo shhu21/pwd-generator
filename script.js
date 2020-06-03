@@ -27,57 +27,73 @@ document.get = pwd;
 
 var password = {
   pwd: "",
-  len: 10,
-  options: []
+  len: 0,
+  options: [],
+  numOptions: 0
 };
 
-function setConditions(password) {
+function ifOption(opt) {
+  if(opt){
+    password.numOptions++;
+  }
+};
+
+function setConditions() {
+  password.pwd = "";
+  password.len = 0;
+  password.options = [];
+  numOptions = 0;
+  
+  password.len = parseInt(window.prompt("Please enter a password length within the range [8, 128]."));
+  if(password.len < 8 || password.len > 128) {
+    window.prompt("Please choose a password length between 8 and 128.");
+    setConditions();
+  }
+
   window.alert("Please choose your password criteria.");
   var opt = window.confirm("Would you like to include lowercase letters?");
   password.options.push(opt);
+  ifOption(opt);
   opt = window.confirm("Would you like to include uppercase letters?");
   password.options.push(opt);
+  ifOption(opt);
   opt = window.confirm("Would you like to include numbers?");
   password.options.push(opt);
+  ifOption(opt);
   opt = window.confirm("Would you like to include special characters?");
   password.options.push(opt);
+  ifOption(opt);
 
-  password.len = parseInt(window.prompt("Please enter a password length within the range [8, 128]."));
-  console.log(password.len);
+  if(password.numOptions == 0) {
+    window.prompt("Please select at least one criteria.");
+    setConditions();
+  }
 };
 
 function generatePassword() {
-  // var checkOptions = ["1", "2", "3"];
   var characters = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789", " !\"#\$%&'()*+,-./:;<=>?@[\]^_`{|}~"];
-
-  // var totalLen = 10;
-  // var pwd = "";
+  
+  setConditions();
   var tempLen = password.len;
-
-  setConditions(password);
-
-  if(password.len < 8 || password.len > 128) {
-    window.prompt("Please choose a password length between 8 and 128.");
-    setConditions(password);
-  }
-  // redo parameters. options.length will always be 4
-  else if(password.len < password.options.length) {
-    window.prompt("Entered length is inefficient for character specifications.");
-    setConditions(password);
-  }
-  else {
-    while(password.pwd.length != password.len) {
-      for(var i = 0; i < password.options.length; i++) {
-        // console.log(password.options[i]);
-        var num = Math.floor(Math.random() * (tempLen - password.options.length)) + 1;
+  while(password.pwd.length < password.len) {
+    for(var i = 0; i < password.options.length; i++) {
+      if(password.options[i]) {
+        var num = tempLen;
+        if(tempLen > password.numOptions) {
+          num = Math.floor(Math.random() * (tempLen - password.numOptions)) + 1;
+        }
+        tempLen -= num;
         for(var j = 0; j < num; j++){
           // add a random might need another for loop
-          password.pwd += password.options[i];
+          password.pwd += characters[i][j];
         }
-        // console.log(password.pwd);
       }
     }
   }
+
+  console.log(password.pwd.length);
+  //store in a temp string and then randomize
+  return password.pwd;
 };
 
 // Get references to the #generate element
