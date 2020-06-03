@@ -1,4 +1,5 @@
 // Assignment code here
+
 // password object declaration
 var password = {
   pwd: "",
@@ -51,6 +52,20 @@ function setConditions() {
   }
 };
 
+// randomize string
+// 'str' = string to randomize
+// 'len' = length of randomized string
+function randomize(str, len) {
+  // new randomized string
+  var newStr = "";
+  
+  for(var i = 0; i < len; i++) {
+    newStr += str[Math.floor(Math.random() * (str.length))];
+  }
+
+  return newStr;
+};
+
 // generates the random password
 function generatePassword() {
   // strings of each criteria
@@ -58,11 +73,13 @@ function generatePassword() {
   
   // set the criteria conditions
   setConditions();
+
   // set temporary length
   var tempLen = password.len;
+  var tempStr = "";
 
   // while the password length is less than the set length
-  while(password.pwd.length < password.len) {
+  while(tempStr.length < password.len) {
     // loops through the character criteria
     for(var i = 0; i < password.options.length; i++) {
       // checks if is a chosen criteria
@@ -75,18 +92,17 @@ function generatePassword() {
         }
         // deduct the random length from the temporary length (length left to generate)
         tempLen -= num;
-        // will break if num is larger than the characters strings
-        // generate a string of length num by randomizing the indices from the chosen criteria strings
-        for(var j = 0; j < num; j++){
-          // TODO: randomize
-          password.pwd += characters[i][j];
-        }
+
+        // randomly choose characters from the chosen criteria
+        tempStr += randomize(characters[i], num);
       }
     }
   }
 
-  console.log(password.pwd.length);
-  // TODO: store in a temp string and then randomize
+  // randomize the string, so the each criteria isn't consecutive
+  password.pwd = randomize(tempStr, password.len);
+  
+  // return the generated password
   return password.pwd;
 };
 
