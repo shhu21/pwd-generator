@@ -28,7 +28,7 @@ function setConditions() {
 
   // get the length from the user
   password.len = parseInt(window.prompt("Please enter a password length within the range [8, 128]."));
-  console.log(password.len);
+  
   // check if the length meets the requirements
   if (password.len >= 8 && password.len <= 128) {
     // get the criteria
