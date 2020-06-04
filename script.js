@@ -28,8 +28,9 @@ function setConditions() {
 
   // get the length from the user
   password.len = parseInt(window.prompt("Please enter a password length within the range [8, 128]."));
+  console.log(password.len);
   // check if the length meets the requirements
-  if (password.len >= 8 || password.len <= 128) {
+  if (password.len >= 8 && password.len <= 128) {
     // get the criteria
     window.alert("Please choose your password criteria.");
     var opt = window.confirm("Would you like to include lowercase letters?");
@@ -52,7 +53,7 @@ function setConditions() {
     }
   }
   else {
-    window.prompt("Please choose a password length between 8 and 128.");
+    window.alert("Please choose a password length between 8 and 128.");
     setConditions();
   }
 };
