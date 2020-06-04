@@ -10,11 +10,11 @@ __*Character Criteria*__ </br>
 - Numeric Characters
 - Special Characters
 
-## Functionality
+# Functionality
 
 ### generatePassword()
 __Parameters:__ None. </br>
-__Return Type:__ String.
+__Return Type:__ String. </br>
 __Purpose:__ Generates a randomized password based on the user's chosen critiera. </br>
 __Functionality:__ Calls setConditions(). While the length of `password.pwd` is shorter than the target length (`password.len`) iterate through array `password.options`.  If it is a chosen character criteria (i.e. the index returns `true` or `1`), then it chooses a random character from the chosen character criteria and appends it to `password.pwd`. </br>
 __Declared Variables:__ </br>
@@ -24,7 +24,7 @@ __Declared Variables:__ </br>
 
 </br>
 
-### Helper Functions
+## Helper Functions
 
 ### setConditions()
 __Parameters:__ None. </br>
