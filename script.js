@@ -48,7 +48,7 @@ function setConditions() {
     
     // criteria check
     if (password.numOptions == 0) {
-      window.prompt("Please select at least one criteria.");
+      window.alert("Please select at least one criteria.");
       setConditions();
     }
   }
