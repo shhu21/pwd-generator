@@ -10,7 +10,7 @@ var password = {
 
 // updates count of chosen criteria
 function ifOption(opt) {
-  if(opt){
+  if (opt) {
     password.numOptions++;
   }
 };
@@ -21,7 +21,7 @@ function reset() {
   password.len = 0;
   password.options = [];
   numOptions = 0;
-}
+};
 
 function setConditions() {
   reset();
@@ -29,7 +29,7 @@ function setConditions() {
   // get the length from the user
   password.len = parseInt(window.prompt("Please enter a password length within the range [8, 128]."));
   // check if the length meets the requirements
-  if(password.len >= 8 || password.len <= 128) {
+  if (password.len >= 8 || password.len <= 128) {
     // get the criteria
     window.alert("Please choose your password criteria.");
     var opt = window.confirm("Would you like to include lowercase letters?");
@@ -46,7 +46,7 @@ function setConditions() {
     ifOption(opt);
     
     // criteria check
-    if(password.numOptions == 0) {
+    if (password.numOptions == 0) {
       window.prompt("Please select at least one criteria.");
       setConditions();
     }
@@ -69,14 +69,17 @@ function generatePassword() {
   var tempLen = password.len;
   
   // while the password length is less than the set length
-  while(password.pwd.length < password.len) {
+  while (password.pwd.length < password.len) {
     var tempNum = password.numOptions;
+
     // loops through the character criteria
-    for(var i = 0; i < password.options.length; i++) {
+    for (var i = 0; i < password.options.length; i++) {
+
       // checks if is a chosen criteria
-      if(password.options[i]) {
+      if (password.options[i]) {
         // frequency of the chosen criteria
         var num = Math.floor(Math.random() * (tempLen - tempNum)) + 1;
+
         // decrement the number of options left
         tempNum -= 1;
         // deduct the random length from the temporary length (length left to generate)
@@ -87,7 +90,7 @@ function generatePassword() {
       }
     }
   }
-  
+
   // return the generated password
   return password.pwd;
 };
