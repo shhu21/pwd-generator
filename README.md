@@ -69,7 +69,7 @@ __Properties:__
 > __Purpose:__ Number of character criteria chosen by the user. </br>
 
 ## Website Preview
-![](./assets/images/screenshot.png)
+![](./screenshot.png)
 
 <br><br>
 __*Live URL:*__ https://shhu21.github.io/pwd-generator/
