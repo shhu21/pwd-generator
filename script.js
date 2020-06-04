@@ -64,13 +64,9 @@ function generatePassword() {
   
   // set the criteria conditions
   setConditions();
-
-  // set temporary length
-  var tempLen = password.len;
   
   // while the password length is less than the set length
   while (password.pwd.length < password.len) {
-    var tempNum = password.numOptions;
     // loops through the character criteria
     for (var i = 0; i < password.options.length; i++) {
       // checks if is a chosen criteria
