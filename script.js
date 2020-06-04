@@ -87,7 +87,7 @@ function generatePassword() {
       }
     }
   }
-  console.log(password.pwd.length);
+  
   // return the generated password
   return password.pwd;
 };
