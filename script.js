@@ -71,20 +71,10 @@ function generatePassword() {
   // while the password length is less than the set length
   while (password.pwd.length < password.len) {
     var tempNum = password.numOptions;
-
     // loops through the character criteria
     for (var i = 0; i < password.options.length; i++) {
-
       // checks if is a chosen criteria
       if (password.options[i]) {
-        // frequency of the chosen criteria
-        var num = Math.floor(Math.random() * (tempLen - tempNum)) + 1;
-
-        // decrement the number of options left
-        tempNum -= 1;
-        // deduct the random length from the temporary length (length left to generate)
-        tempLen -= num;
-
         // randomly choose characters from the chosen criteria
         password.pwd += characters[i][Math.floor(Math.random() * (characters[i].length))];
       }
