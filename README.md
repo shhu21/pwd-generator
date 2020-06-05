@@ -27,7 +27,7 @@ __Declared Variables:__ None.
 __Parameters:__ None. </br>
 __Return Type:__ Void. </br>
 __Purpose:__ Creates a radomized password based on the user's chosen critiera. </br>
-__FunctionalityL__ If the length of `password.pwd` is shorter than the target length (`password.len`), then iterate through array `password.options`.  If it is a chosen character criteria (i.e. the index returns `true` or `1`), then it chooses a random character from the chosen character criteria and appends it to `password.pwd`.  `randomize()` is called again and runs recursively until the length of `password.pwd` is equal to the user's specified length. </br>
+__Functionality:__ If the length of `password.pwd` is shorter than the target length (`password.len`), then iterate through array `password.options`.  If it is a chosen character criteria (i.e. the index returns `true` or `1`), then it chooses a random character from the chosen character criteria and appends it to `password.pwd`.  `randomize()` is called again and runs recursively until the length of `password.pwd` is equal to the user's specified length. </br>
 __Declared Variables:__ </br>
 -`characters` </br>
 > __Data Type:__ Array. </br>
