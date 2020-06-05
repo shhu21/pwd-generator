@@ -15,16 +15,23 @@ __*Character Criteria*__ </br>
 ### generatePassword()
 __Parameters:__ None. </br>
 __Return Type:__ String. </br>
-__Purpose:__ Generates a randomized password based on the user's chosen critiera. </br>
-__Functionality:__ Calls setConditions(). While the length of `password.pwd` is shorter than the target length (`password.len`) iterate through array `password.options`.  If it is a chosen character criteria (i.e. the index returns `true` or `1`), then it chooses a random character from the chosen character criteria and appends it to `password.pwd`. </br>
-__Declared Variables:__ </br>
--`characters` </br>
-> __Data Type:__ Array. </br>
-> __Purpose:__ Stores static strings of each character criteria.
+__Purpose:__ Gets criteria from the user and generates a randomized password. </br>
+__Functionality:__ Calls setConditions(), then calls randomize() to generate a random password and returns the password.  </br>
+__Declared Variables:__ None.
 
 </br>
 
 ## Helper Functions
+
+### randomize()
+__Parameters:__ None. </br>
+__Return Type:__ Void. </br>
+__Purpose:__ Creates a radomized password based on the user's chosen critiera. </br>
+__FunctionalityL__ If the length of `password.pwd` is shorter than the target length (`password.len`), then iterate through array `password.options`.  If it is a chosen character criteria (i.e. the index returns `true` or `1`), then it chooses a random character from the chosen character criteria and appends it to `password.pwd`.  `randomize()` is called again and runs recursively until the length of `password.pwd` is equal to the user's specified length. </br>
+__Declared Variables:__ </br>
+-`characters` </br>
+> __Data Type:__ Array. </br>
+> __Purpose:__ Stores static strings of each character criteria.
 
 ### setConditions()
 __Parameters:__ None. </br>
