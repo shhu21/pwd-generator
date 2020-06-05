@@ -58,16 +58,12 @@ function setConditions() {
   }
 };
 
-// generates the random password
-function generatePassword() {
+function randomize() {
   // strings of each criteria
   var characters = ["abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789", " !\"#\$%&'()*+,-./:;<=>?@[\]^_`{|}~"];
   
-  // set the criteria conditions
-  setConditions();
-  
   // while the password length is less than the set length
-  while (password.pwd.length < password.len) {
+  if (password.pwd.length < password.len) {
     // loops through the character criteria
     for (var i = 0; i < password.options.length; i++) {
       // checks if is a chosen criteria
@@ -76,8 +72,16 @@ function generatePassword() {
         password.pwd += characters[i][Math.floor(Math.random() * (characters[i].length))];
       }
     }
+    randomize();
   }
+}
 
+// generates the random password
+function generatePassword() {
+  // set the criteria conditions
+  setConditions();
+  // randomize the password
+  randomize();
   // return the generated password
   return password.pwd;
 };
